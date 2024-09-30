@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./question_app/css/desktop.css">
+    <link rel="stylesheet" href="./question_app/fontawesome-free-6.6.0-web/css/all.css">
+    <script src="./question_app/fontawesome-free-6.6.0-web/js/all.js"></script>
+    <title>Axiom</title>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="school-name-conc">
+            <h1 class="school-name">Axiom Entrance Exam</h1>
+            <div class="time-conc">
+                <div class="tag time">Time:<span class="tag-2 time-value">00:00</span></div>
+            </div>
+        </div>
+        <div class="current-subject-number">
+            <div class="navicon-box"><i class="fa fa-navicon" id="navicon"></i></div>
+            <div class="tag subject">Subject: <span class="tag-2 current-subject">Subject</span></div>
+            <div class="current-question-number-submit">
+                <div class="current-question-number-question tag">No: <input type="text" value="1"
+                        data-question-number="input" class="tag-2 current-question-number" id="input-box"
+                        pattern="/\d+/g" onkeyup=" nextAndPrevOrStart(this);
+       start(subjectArray, this)"> of <span class="no-question">20</span></div>
+                <div class="submit-button tag" onclick="isSubmit = true; setMessage()">Submit</div>
+            </div>
+        </div>
+    </div>
+    <div class="body-app">
+
+        <div class="tab-1" id="subject-info">
+
+            <div class="subject-times">
+                <div class="tag tag-autoz">SUBJECTS
+                </div>
+                <div class="times-box"><i class="fa fa-times"></i></div>
+            </div>
+            <div class="question-tags">
+                <div class="tag subject-tag" id="english-tag" data-subject-number="0"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions() ;  ">
+                    ENGLISH
+                </div>
+                <div class="tag subject-tag" id="math-tag" data-subject-number="1"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions() ;  ">
+                    MATH</div>
+                <div class="tag subject-tag" id="chemistry-tag" data-subject-number="2"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions();  ">
+                    CHEMISTRY
+                </div>
+                <div class="tag subject-tag" id="physics-tag" data-subject-number="3"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions() ;  ">
+                    PHYSICS
+                </div>
+                <div class="tag subject-tag" id="biology-tag" data-subject-number="4"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions() ;  ">
+                    BIOLOGY
+                </div>
+                <div class="tag subject-tag" id="current-affairs-tag" data-subject-number="5"
+                    onclick=" nextAndPrevOrStart(this) ; focusSubject(this);  start(subjectArray, this); sortAttemptedQuestions() ;  ">
+                    CURRENT AFFAIRS</div>
+            </div>
+        </div>
+        <div class="tab-2" id="question-body">
+
+            <marquee behavior="scroll" direction="left">Wishing you best of luck in your exam!</marquee>
+            <div class="question-calculator-box">
+                <div class="tag">QUESTION</div>
+                <div class="calculator-box">
+                    <button class="" onclick="openCalc()">Calculator</button>
+                    <div class="dropdown-calculator">
+                        <div class="calculator">
+                            <input type="text" id="screen" maxlength="15">
+
+                            <div class="button-box">
+                                <div class="button-group">
+                                    <div class="calculator-button tag" data-button="0">0
+                                    </div>
+                                    <div class="functions tag" data-button="pow">X<sup>2</sup>
+                                    </div>
+                                    <div class=" functions tag" id="texed-button"  data-button="SQR">SQR
+                                    </div>
+                                    <div class="functions tag"  id="texed-button" data-button="EXP">
+                                        e
+                                    </div>
+                                </div>
+                                <div class="calculator-button tag" data-button="1">1
+                                </div>
+                                <div class="calculator-button tag" data-button="2">2
+                                </div>
+                                <div class="calculator-button tag" data-button="3">3
+                                </div>
+                                <div class="calculator-button tag" data-button="AC">AC
+                                </div>
+                                <div class="calculator-button tag" data-button="4">4
+                                </div>
+                                <div class="calculator-button tag" data-button="5">5
+                                </div>
+                                <div class="calculator-button tag" data-button="6">6
+                                </div>
+                                <div class="calculator-button tag" data-button="-">-
+                                </div>
+                                <div class="calculator-button tag" data-button="7">7
+                                </div>
+                                <div class="calculator-button tag" data-button="8">8
+                                </div>
+                                <div class="calculator-button tag" data-button="9">9
+                                </div>
+                                <div class="calculator-button tag" data-button="+">+
+                                </div>
+                                <div class="tag calculator-button" data-button=".">.
+                                </div>
+                                <div class="calculator-button tag" data-button="*">*
+                                </div>
+                                <div class="calculator-button tag" data-button="/">/
+                                </div>
+                                <div class="calculator-button tag" data-button="solve">
+                                    =
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="caretBox">
+                <div class="caret_left caret_control" data-element="caret-left"
+                    onclick="sortAttemptedQuestions();   nextAndPrevOrStart(this); start(subjectArray)"
+                    id="caret-left-id">
+                    <i class="fa fa-caret-left"></i>
+                </div>
+                <div class="caret_right  caret_control" data-element="caret-right"
+                    onclick="sortAttemptedQuestions();   nextAndPrevOrStart(this); start(subjectArray)"
+                    id="caret-right-id">
+                    <i class="fa fa-caret-right"></i>
+                </div>
+            </div>
+            <div id="question-text">Your questions goes <strong>HERE</strong>. Click on your desired subject by
+                the left
+                sidebar to start.
+            </div>
+            <div class="options-box">
+                <ul>
+                    <label for="option-1">
+                        <li>(A) <input type="radio" name="options" id="option-1" class="option-radios"><span
+                                class="option-text" id=""> option-1</span>
+                        </li>
+                    </label>
+                    <label for="option-2">
+                        <li>(B) <input type="radio" name="options" id="option-2" class="option-radios"><span
+                                class="option-text"> option-2</span>
+                        </li>
+                    </label>
+                    <label for="option-3">
+                        <li>(C) <input type="radio" name="options" id="option-3" class="option-radios"><span
+                                class="option-text"> option-3</span>
+                        </li>
+                    </label>
+                    <label for="option-4">
+                        <li>(D) <input type="radio" name="options" id="option-4" class="option-radios"><span
+                                class="option-text"> option-4</span>
+                        </li>
+                    </label>
+                </ul>
+                <div class="question-num-tags">
+
+                    <div class="non-attempted"></div>
+                    <div class="attempted"></div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-3 " id="canditate-info">
+            <div class="tag tag-auto underline">Candidate Info</div>
+            <div class="name-img">
+                <img src="react.svg" alt="user" width="100" height="100">
+                <div class="" style="font-size: larger;">Developer</div>
+            </div>
+
+            <div class=""><a href="mailto:qosimabdulrahman0@gmail.com"
+                    style="font-size: larger; text-decoration: none;">qosimabdulrahman0@gmail.com</a></div>
+            <!-- <img src="image.svg" alt="logo"> -->
+        </div>
+    </div>
+    <div id="overlay">
+        <h1 class="axiom">
+            Welcome to Axiom CBT!
+            <button class="proceed-button" onclick="preludeSetting(this)">Proceed <span
+                    class="proceed-button-arrow">>></span></button>
+        </h1>
+
+    </div>
+    <script src="./question_app/script/script.js"></script>
+    <script src="./question_app/script/calc.js"></script>
+</body>
+
+</html>
