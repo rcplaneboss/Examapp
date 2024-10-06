@@ -413,6 +413,12 @@ button,
     margin-right: -47px;
 }
 
+.tab-3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
 @media screen and (max-width: 530px) {
     .tab-3 {
         display: none;
@@ -547,11 +553,7 @@ button,
     text-align: right;
 }
 
-#canditate-info{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+
 
 .button-group{
     display: flex;
